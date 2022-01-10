@@ -11,11 +11,9 @@ function addTodo(todoText) {
     newItem.innerText = todoText
     newItem.classList.add("new-item")
 
-    // Creating form for editing & deleting
-    const newItemForm = document.createElement("form")
-    newItemForm.classList.add("new-item-form")
 
     // Creating Edit button
+    const newItemEditForm = document.createElement("form")
     const newItemEdit = document.createElement("label")
 
     const newItemEditButton = document.createElement("input")
@@ -26,8 +24,12 @@ function addTodo(todoText) {
     newItemEditSVG.setAttribute("src", "svg/iconmonstr-pencil-14.svg")
     newItemEditSVG.classList.add("new-item-edit-svg")
     newItemEdit.append(newItemEditButton, newItemEditSVG)
+    newItemEditForm.appendChild(newItemEdit)
+    newItemEditForm.addEventListener("submit", editItem)
+
 
     // Creating Remove button
+    const newItemRemoveForm = document.createElement("form")
     const newItemRemove = document.createElement("label")
 
     const newItemRemoveButton = document.createElement("input")
@@ -39,16 +41,26 @@ function addTodo(todoText) {
     newItemRemoveSVG.setAttribute("width", "25px")
     newItemRemoveSVG.classList.add("new-item-remove-svg")
     newItemRemove.append(newItemRemoveButton, newItemRemoveSVG)
+    newItemRemoveForm.appendChild(newItemRemove)
+    newItemRemoveForm.addEventListener("submit", removeItem)
 
     // Appending form -> item -> todoList
-    newItemForm.append(newItemEdit, newItemRemove)
-
-    newItem.appendChild(newItemForm)
+    const buttonsContainer = document.createElement("div")
+    buttonsContainer.classList.add("buttons-container")
+    buttonsContainer.append(newItemEditForm, newItemRemoveForm)
+    newItem.appendChild(buttonsContainer)
 
     todoItems.push(newItem)
     
     todoList.appendChild(newItem)
 
+    function removeItem(event) {
+        event.preventDefault()
+        newItem.remove()
+    }
+    function editItem(event) {
+        event.preventDefault()
+    }
 }
 
 form.onsubmit = (event) => {
