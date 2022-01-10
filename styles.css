@@ -1,79 +1,174 @@
 body {
+    background-color: #dae4e6;
+}
+
+/* <main> -> flex, to arrange everything in a column */
+main {
     display: flex;
     flex-direction: column;
-    background-color: #dae4e6;
     align-items: center;
 }
+
+/* Heading */
+.main-heading {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 2em;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+/* ToDo List container */
 .todos {
     display: flex;
     flex-direction: column;
-    border: 3px solid black;
+    border: 2px solid #afb3b4;
     border-radius: 15px;
-    width: 50%;
+    width: 30em;
     padding: 10px;
-    background-color: pink;
+    background-color: white;
+    box-shadow: 5px 5px 12px 0px #000000;
 }
 
+/* Every Item container */
 .new-item {
-    background-color: steelblue;
+    background: linear-gradient(to right, rgb(213, 226, 233), rgb(135, 201, 245));
     display: grid;
     grid-template-columns: 80% 20%;
     word-wrap: break-word;
-    border: 3px solid black;
     border-radius: 15px;
-    padding-left: 5px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     font-size: 1.5em;
-    margin: 5px 0;
+    margin: 8px 0;
+    box-shadow: 5px 5px 12px -7px #818181;
 }
 
+/* Adding Bullet in front of every ToDo */
+.text-container::before {
+    content: "•";
+    display: inline;
+    color: black;
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+/* Adding "Press <Enter> to save" on end afer clicking Edit Button" */
+.warning-span {
+    display: inline;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.5em;
+    margin-left: 10px;
+}
+
+/* Removing outline on mouse click in Edit mode */
+[contenteditable] {
+    outline: 0px solid transparent;
+}
+
+/* Container for 2 forms with buttons */
 .buttons-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 50% 50%;
     align-items: center;
     justify-content: space-evenly;
 }
 
+/* Each form and label is a flex-container */
+.buttons-form {
+    display: flex;
+    margin: auto;
+}
+
+.buttons-label {
+    display: flex;
+    margin: auto;
+}
+
+/* Hide Edit button to get replaced by SVG */
 .new-item-edit-button {
     display: none;
 }
 
+/* Edit SVG grows on hover ***NOT WORKING*** */
 .new-item-edit-svg {
-    
+    transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
 }
 
+.new-item-edit-svg:hover {
+    width: 32px;
+    height: 32px;
+} 
+
+/* Hide Remove button to get replaced by SVG */
 .new-item-remove-button {
     display: none;
 }
 
+/* Remove SVG grows on hover */
 .new-item-remove-svg {
-
+    transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
 }
 
+.new-item-remove-svg:hover {
+    width: 32px;
+    height: 32px;
+} 
+
+/* Main Form with input and "Add" button */
+.main-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Input field */
 .input {
-    border: 3px solid;
+    border: none;
+    outline: none;
     border-radius: 45px;
     padding: 5px 20px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     font-size: 1.5em;
-    margin-top: 10px;
+    margin-top: 20px;
+    box-shadow: 5px 5px 12px -3px #818181;
 }
 
+/* "Add" button */
 .add-button {
-    border: 3px solid;
+    border: 0.1em solid rgb(51, 66, 73);
     border-radius: 45px;
     padding: 5px 10px;
     font-family: 'Open Sans', sans-serif;
     font-size: 1.5em;
     font-weight: 700;
-    margin-top: 10px;
-    background-color: pink;
-
+    margin-top: 4px;
+    margin-left: 5px;
+    background: linear-gradient(to top left, rgb(135, 201, 245), rgba(135, 201, 245, 0));
+    box-shadow: 5px 5px 12px -3px #818181;
+    transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
 }
 
+/* Animation on hover for "Add" button */
 .add-button:hover {
     border-color: white;
     color: white;
     background-color: rgb(223, 0, 93);
+    padding: 7px 12px;
+    font-size: 1.7em;
+    transform: translate(2px, 0);
+    margin-left: -5px;
 }
