@@ -2,7 +2,6 @@ const form = document.querySelector("form")
 const input = document.querySelector("[name='todo']")
 const todoList = document.querySelector("#todolist")
 
-const todoItems = []
 const todoStrings = []
 
 function addTodo(todoText) {
@@ -60,10 +59,10 @@ function addTodo(todoText) {
     buttonsContainer.append(newItemEditForm, newItemRemoveForm)
     newItem.appendChild(buttonsContainer)
 
-    // Add Item to the array todoItems as an object
-    todoItems.push(newItem)
+    
     // Add Item to the array todoStrings as a string
     todoStrings.push(todoText)
+
     
     todoList.appendChild(newItem)
 
